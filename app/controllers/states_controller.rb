@@ -13,6 +13,7 @@ class StatesController < ApplicationController
 
   def show_deputies
     @state = State.find(params[:id])
+    @deputies = Deputy.all
     url = "http://meucongressonacional.com/api/001/deputado/estado/"+ @state.name
     parsed_data = JSON.parse(open(url).read)
     id_deputies = []
@@ -29,6 +30,7 @@ class StatesController < ApplicationController
 
   def show_senators
     @state = State.find(params[:id])
+    @senators = Senator.all
     url = "http://meucongressonacional.com/api/001/senador/estado/"+ @state.name
     parsed_data = JSON.parse(open(url).read)
     id_senators = []

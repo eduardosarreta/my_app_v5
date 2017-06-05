@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    <%= @state.name%> Senators
+    <%= @party_name%> Senators
   </h1>
 </div>
 
@@ -17,23 +17,23 @@
       </tr>
 
       <tr>
-        <% @id_output_s.each do |z| %>
-        <% id_senator = z.to_i  %>
-        <% senator = @senators.find(id_senator) %>
+        <% @senators.where({:party => @party_name}).each do |y| %>
+        <% id_senator = y.id %>
+
         <td>
-          <img src="<%= senator.picture %>" width="70">
+          <img src="<%= @senators.find(id_senator).picture %>" width="70">
         </td>
         <td>
-          <%= senator.name %>
+          <%= @senators.find(id_senator).name %>
         </td>
         <td>
-          <%= senator.party %>
+          <%= @senators.find(id_senator).party %>
         </td>
         <td>
-          <%= senator.state %>
+          <%= @senators.find(id_senator).state %>
         </td>
         <td>
-          <%= senator.expenses %>
+          <%= @senators.find(id_senator).expenses %>
         </td>
         <td>
           <a href="/senators/<%= id_senator %>" class="btn btn-primary">View expense detail</a>

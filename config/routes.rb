@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   # READ
   get "/parties", :controller => "parties", :action => "index"
   get "/parties/:id", :controller => "parties", :action => "show"
+  get "/parties/:id/deputies", :controller => "parties", :action => "show_deputies"
+  get "/parties/:id/senators", :controller => "parties", :action => "show_senators"
 
   # UPDATE
   get "/parties/:id/edit", :controller => "parties", :action => "edit"

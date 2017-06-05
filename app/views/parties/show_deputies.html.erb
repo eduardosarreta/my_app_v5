@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    <%= @state.name%> Deputies
+    <%= @party_name%> Deputies
   </h1>
 </div>
 
@@ -17,8 +17,8 @@
       </tr>
 
       <tr>
-        <% @id_output_d.each do |y| %>
-        <% id_deputy = y.to_i %>
+        <% @deputies.where({:party => @party_name}).each do |y| %>
+        <% id_deputy = y.id %>
 
         <td>
           <img src="<%= @deputies.find(id_deputy).picture %>" width="70">

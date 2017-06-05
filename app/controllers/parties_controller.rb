@@ -11,6 +11,26 @@ class PartiesController < ApplicationController
     render("parties/show.html.erb")
   end
 
+  def show_deputies
+    @parties = Party.all
+    @party = @parties.find(params[:id])
+    @party_name = @party.name
+    @deputies = Deputy.all
+
+
+    render("parties/show_deputies.html.erb")
+  end
+
+  def show_senators
+    @parties = Party.all
+    @party = @parties.find(params[:id])
+    @party_name = @party.name
+    @senators = Senator.all
+
+
+    render("parties/show_senators.html.erb")
+  end
+
   def new
     @party = Party.new
 

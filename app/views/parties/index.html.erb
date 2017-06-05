@@ -1,7 +1,6 @@
 <div class="page-header">
   <h1>
-    Parties
-    <a href="/parties/new" class="btn btn-lg btn-success">New Party</a>
+    Parties (<%= @parties.count %>)
   </h1>
 </div>
 
@@ -17,9 +16,8 @@
       <tr>
         <td><%= party.name %></td>
         <td>
-          <a href="/parties/<%= party.id %>" class="btn btn-primary">Show</a>
-          <a href="/parties/<%= party.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_party/<%= party.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/parties/<%=party.id%>/deputies" class="btn btn-primary">Show Deputies</a>
+          <a href="/parties/<%=party.id%>/senators" class="btn btn-primary">Show Senators</a>
         </td>
       </tr>
       <% end %>
