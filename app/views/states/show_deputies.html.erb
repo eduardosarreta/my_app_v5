@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>
+    <%= @state.name%> Deputies
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Party</th>
+        <th>State</th>
+        <th>Telephone</th>
+        <th>Email</th>
+        <th>Total spend (2011-2014)</th>
+      </tr>
+
+      <tr>
+        <% @id_output_d.each do |y| %>
+
+        <td>
+          <%= y.to_i %>
+
+        </td>
+        <td>
+          <%= y.to_i %>
+        </td>
+        <td>
+          <%= y.to_i %>
+        </td>
+        <td>
+          <%= y.to_i %>
+        </td>
+        <td>
+          <%= y.to_i %>
+        </td>
+        <td>
+          <%= y.to_i %>
+        </td>
+        <td>
+          <%= y.to_i %>
+        </td>
+      </tr>
+
+      <% end  %>
+
+
+    </table>
+  </div>
+</div>

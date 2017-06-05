@@ -11,6 +11,38 @@ class StatesController < ApplicationController
     render("states/show.html.erb")
   end
 
+  def show_deputies
+    @state = State.find(params[:id])
+    url = "http://meucongressonacional.com/api/001/deputado/estado/"+ @state.name
+    parsed_data = JSON.parse(open(url).read)
+    id_deputies = []
+
+    parsed_data.each do |x|
+      id = x["id"]
+      id_deputies.push(id)
+    end
+
+    @id_output_d = id_deputies
+
+    render("states/show_deputies.html.erb")
+  end
+
+  def show_senators
+    @state = State.find(params[:id])
+    url = "http://meucongressonacional.com/api/001/senador/estado/"+ @state.name
+    parsed_data = JSON.parse(open(url).read)
+    id_senators = []
+
+    parsed_data.each do |x|
+      id = x["id"]
+      id_senators.push(id)
+    end
+
+    @id_output_s = id_senators
+
+    render("states/show_senators.html.erb")
+  end
+
   def new
     @state = State.new
 
