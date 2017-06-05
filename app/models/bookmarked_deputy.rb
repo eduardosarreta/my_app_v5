@@ -1,0 +1,2 @@
+class BookmarkedDeputy < ApplicationRecord
+end

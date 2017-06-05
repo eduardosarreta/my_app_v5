@@ -1,0 +1,2 @@
+class BookmarkedSenator < ApplicationRecord
+end
