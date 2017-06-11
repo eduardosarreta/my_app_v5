@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  root 'states#index'
+
+  root 'deputies#index'
   # Routes for the Bookmarked_senator resource:
   # CREATE
   get "/bookmarked_senators/new", :controller => "bookmarked_senators", :action => "new"
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # READ
   get "/bookmarked_senators", :controller => "bookmarked_senators", :action => "index"
   get "/bookmarked_senators/:id", :controller => "bookmarked_senators", :action => "show"
+
 
   # UPDATE
   get "/bookmarked_senators/:id/edit", :controller => "bookmarked_senators", :action => "edit"
@@ -82,6 +83,7 @@ Rails.application.routes.draw do
   # READ
   get "/senators", :controller => "senators", :action => "index"
   get "/senators/:id", :controller => "senators", :action => "show"
+  get "/senators/:id/expenses", :controller => "senators", :action => "show_expenses"
 
   # UPDATE
   get "/senators/:id/edit", :controller => "senators", :action => "edit"
@@ -99,6 +101,7 @@ Rails.application.routes.draw do
   # READ
   get "/deputies", :controller => "deputies", :action => "index"
   get "/deputies/:id", :controller => "deputies", :action => "show"
+  get "/deputies/:id/expenses", :controller => "deputies", :action => "show_expenses"
 
   # UPDATE
   get "/deputies/:id/edit", :controller => "deputies", :action => "edit"
@@ -107,6 +110,10 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_deputy/:id", :controller => "deputies", :action => "destroy"
   #------------------------------
+
+  devise_for :users
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

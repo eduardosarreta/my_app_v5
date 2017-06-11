@@ -44,8 +44,12 @@
           <li><a href="/senators">Senators</a></li>
           <li><a href="/parties">Parties</a></li>
           <li><a href="/states">States</a></li>
-          <li><a href="/bookmarked_deputies">Bookmarked Deputies</a></li>
-          <li><a href="/bookmarked_senators">Bookmarked Senators</a></li>
+          <% if current_user != nil %>
+          <li><a href="/bookmarked_deputies">My Deputies</a></li>
+          <li><a href="/bookmarked_senators">My Senators</a></li>
+          <li><a href="/bookmarked_senators">My Red flags</a></li>
+          <% else %>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

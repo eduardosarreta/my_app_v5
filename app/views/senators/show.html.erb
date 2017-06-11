@@ -1,18 +1,20 @@
 <div class="page-header">
-  <h3>Senator #<%= @senator.id %></h3>
+  <h3><%= @senator.name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @senator.name %></dd>
+
+      <dt></dt>
+      <dd><img src="<%= @senator.picture %>" width="70"></dd>
+
+
 
       <dt>Party</dt>
       <dd><%= @senator.party %></dd>
 
-      <dt>Sex</dt>
-      <dd><%= @senator.sex %></dd>
+
 
       <dt>State</dt>
       <dd><%= @senator.state %></dd>
@@ -23,11 +25,10 @@
       <dt>Email</dt>
       <dd><%= @senator.email %></dd>
 
-      <dt>Picture</dt>
-      <dd><%= @senator.picture %></dd>
+
 
       <dt>Expenses</dt>
-      <dd><%= @senator.expenses %></dd>
+      <dd><%= number_to_currency(@senator.expenses, unit: "R$", precision: 0) %></dd>
 
     </dl>
 

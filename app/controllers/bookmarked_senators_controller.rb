@@ -1,6 +1,7 @@
 class BookmarkedSenatorsController < ApplicationController
   def index
     @bookmarked_senators = BookmarkedSenator.all
+    @senators = Senator.all
 
     render("bookmarked_senators/index.html.erb")
   end
@@ -26,7 +27,7 @@ class BookmarkedSenatorsController < ApplicationController
     save_status = @bookmarked_senator.save
 
     if save_status == true
-      redirect_to("/bookmarked_senators/#{@bookmarked_senator.id}", :notice => "Bookmarked senator created successfully.")
+      redirect_to("/senators", :notice => "Senator bookmarked successfully.")
     else
       render("bookmarked_senators/new.html.erb")
     end

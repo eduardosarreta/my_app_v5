@@ -1,6 +1,7 @@
 class BookmarkedDeputiesController < ApplicationController
   def index
     @bookmarked_deputies = BookmarkedDeputy.all
+    @deputies = Deputy.all
 
     render("bookmarked_deputies/index.html.erb")
   end
@@ -26,7 +27,7 @@ class BookmarkedDeputiesController < ApplicationController
     save_status = @bookmarked_deputy.save
 
     if save_status == true
-      redirect_to("/bookmarked_deputies/#{@bookmarked_deputy.id}", :notice => "Bookmarked deputy created successfully.")
+      redirect_to("/deputies", :notice => "Deputy bookmarked successfully.")
     else
       render("bookmarked_deputies/new.html.erb")
     end

@@ -11,6 +11,17 @@ class SenatorsController < ApplicationController
     render("senators/show.html.erb")
   end
 
+  def show_expenses
+    @senator = Senator.find(params[:id])
+    url = "http://meucongressonacional.com/api/001/senador/#{@senator.id}/gastos/cnpj"
+    @senator_expenses_parsed_data = JSON.parse(open(url).read)
+
+
+    render("senators/show_expenses.html.erb")
+  end
+
+
+
   def new
     @senator = Senator.new
 

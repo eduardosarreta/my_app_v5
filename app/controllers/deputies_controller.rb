@@ -11,6 +11,15 @@ class DeputiesController < ApplicationController
     render("deputies/show.html.erb")
   end
 
+  def show_expenses
+    @deputy = Deputy.find(params[:id])
+    url = "http://meucongressonacional.com/api/001/deputado/#{@deputy.id}/gastos/cnpj"
+    @deputy_expenses_parsed_data = JSON.parse(open(url).read)
+
+
+    render("deputies/show_expenses.html.erb")
+  end
+
   def new
     @deputy = Deputy.new
 
