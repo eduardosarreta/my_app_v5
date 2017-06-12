@@ -186,6 +186,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get "/my_bookmarked_deputies", :controller => "users", :action => "show_bookmarked_deputies"
+  get "/my_bookmarked_senators", :controller => "users", :action => "show_bookmarked_senators"
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
