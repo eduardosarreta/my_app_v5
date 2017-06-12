@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605013454) do
+ActiveRecord::Schema.define(version: 20170611232255) do
 
   create_table "bookmarked_deputies", force: :cascade do |t|
     t.integer  "user_id"
@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(version: 20170605013454) do
     t.integer  "senator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments_expense_deputies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.integer  "red_flag_expense_deputy_id"
+    t.integer  "deputy_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "comments_expense_senators", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.integer  "red_flag_expense_senator_id"
+    t.integer  "senator_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "deputies", force: :cascade do |t|
@@ -41,6 +59,33 @@ ActiveRecord::Schema.define(version: 20170605013454) do
 
   create_table "parties", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "red_flag_expense_deputies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "deputy_id"
+    t.string   "expense_description"
+    t.string   "expense_detail"
+    t.float    "expense_amount"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "red_flag_expense_senators", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "senator_id"
+    t.string   "expense_description"
+    t.string   "expense_detail"
+    t.float    "expense_amount"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "red_flags_expenses_deputies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "deputy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

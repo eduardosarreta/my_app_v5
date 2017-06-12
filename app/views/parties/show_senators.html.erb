@@ -8,37 +8,52 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Image</th>
+        <th></th>
         <th>Name</th>
         <th>Party</th>
         <th>State</th>
-        <th>Total spend (2011-2014)</th>
+        <th>Expenses ('11-'14)</th>
         <th>Actions</th>
+        <th>Bookmark</th>
       </tr>
 
+      <% @senators.where({:party => @party_name}).each do |y| %>
+      <% id_senator = y.id %>
+
       <tr>
-        <% @senators.where({:party => @party_name}).each do |y| %>
-        <% id_senator = y.id %>
+
 
         <td>
-          <img src="<%= @senators.find(id_senator).picture %>" width="70">
+          <img src="<%= y.picture %>" width="70">
         </td>
         <td>
-          <%= @senators.find(id_senator).name %>
+          <%= y.name %>
         </td>
         <td>
-          <%= @senators.find(id_senator).party %>
+          <%= y.party %>
         </td>
         <td>
-          <%= @senators.find(id_senator).state %>
+          <%= y.state %>
         </td>
         <td>
-          <%= @senators.find(id_senator).expenses %>
+          <%= number_to_currency(y.expenses, unit: "R$", precision: 0) %>
         </td>
         <td>
-          <a href="/senators/<%= id_senator %>" class="btn btn-primary">View expense detail</a>
-          <a href="/senators/<%= id_senator %>/edit" class="btn btn-warning">Add to watchlist</a>
-          <a href="/senators/<%= id_senator %>/edit" class="btn btn-warning">View contact details</a>
+          <a href="/senators/<%= y.id %>/expenses" class="btn btn-info">View expense detail</a>
+          <a href="/senators/<%= y.id %>" class="btn btn-primary">View contact details</a>
+        </td>
+        <td>
+          <form action="/create_bookmarked_senator" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <input type="hidden" name="senator_id" value="<%=y.id%>">
+
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+            <button class="btn btn-warning">
+              Add to watchlist
+            </button>
+          </form>
         </td>
       </tr>
 

@@ -1,6 +1,79 @@
 Rails.application.routes.draw do
 
 
+  # Routes for the Comments_expense_senator resource:
+  # CREATE
+  get "/comments_expense_senators/new", :controller => "comments_expense_senators", :action => "new"
+  post "/create_comments_expense_senator", :controller => "comments_expense_senators", :action => "create"
+  post "/create_comments_expense_senator_in_existing_red_flag", :controller => "comments_expense_senators", :action => "create_comment"
+
+  # READ
+  get "/comments_expense_senators", :controller => "comments_expense_senators", :action => "index"
+  get "/comments_expense_senators/:id", :controller => "comments_expense_senators", :action => "show"
+
+  # UPDATE
+  get "/comments_expense_senators/:id/edit", :controller => "comments_expense_senators", :action => "edit"
+  post "/update_comments_expense_senator/:id", :controller => "comments_expense_senators", :action => "update"
+
+  # DELETE
+  get "/delete_comments_expense_senator/:id", :controller => "comments_expense_senators", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Comments_expense_deputy resource:
+  # CREATE
+  get "/comments_expense_deputies/new", :controller => "comments_expense_deputies", :action => "new"
+  post "/create_comments_expense_deputy", :controller => "comments_expense_deputies", :action => "create"
+  post "/create_comments_expense_deputy_in_existing_red_flag", :controller => "comments_expense_deputies", :action => "create_comment"
+
+  # READ
+  get "/comments_expense_deputies", :controller => "comments_expense_deputies", :action => "index"
+  get "/comments_expense_deputies/:id", :controller => "comments_expense_deputies", :action => "show"
+
+  # UPDATE
+  get "/comments_expense_deputies/:id/edit", :controller => "comments_expense_deputies", :action => "edit"
+  post "/update_comments_expense_deputy/:id", :controller => "comments_expense_deputies", :action => "update"
+
+  # DELETE
+  get "/delete_comments_expense_deputy/:id", :controller => "comments_expense_deputies", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Red_flag_expense_senator resource:
+  # CREATE
+  get "/red_flag_expense_senators/new", :controller => "red_flag_expense_senators", :action => "new"
+  post "/create_red_flag_expense_senator", :controller => "red_flag_expense_senators", :action => "create"
+
+  # READ
+  get "/red_flag_expense_senators", :controller => "red_flag_expense_senators", :action => "index"
+  get "/red_flag_expense_senators/:id", :controller => "red_flag_expense_senators", :action => "show"
+  get "/show_red_flag_expense_senators/:senator_id", :controller => "red_flag_expense_senators", :action => "show_red_flags_senator"
+
+  # UPDATE
+  get "/red_flag_expense_senators/:id/edit", :controller => "red_flag_expense_senators", :action => "edit"
+  post "/update_red_flag_expense_senator/:id", :controller => "red_flag_expense_senators", :action => "update"
+
+  # DELETE
+  get "/delete_red_flag_expense_senator/:id", :controller => "red_flag_expense_senators", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Red_flag_expense_deputy resource:
+  # CREATE
+  get "/red_flag_expense_deputies/new", :controller => "red_flag_expense_deputies", :action => "new"
+  post "/create_red_flag_expense_deputy", :controller => "red_flag_expense_deputies", :action => "create"
+
+  # READ
+  get "/red_flag_expense_deputies", :controller => "red_flag_expense_deputies", :action => "index"
+  get "/red_flag_expense_deputies_senators", :controller => "red_flag_expense_deputies", :action => "index_all"
+  get "/red_flag_expense_deputies/:id", :controller => "red_flag_expense_deputies", :action => "show"
+  get "/show_red_flag_expense_deputies/:deputy_id", :controller => "red_flag_expense_deputies", :action => "show_red_flags_deputy"
+
+  # UPDATE
+  get "/red_flag_expense_deputies/:id/edit", :controller => "red_flag_expense_deputies", :action => "edit"
+  post "/update_red_flag_expense_deputy/:id", :controller => "red_flag_expense_deputies", :action => "update"
+
+  # DELETE
+  get "/delete_red_flag_expense_deputy/:id", :controller => "red_flag_expense_deputies", :action => "destroy"
+  #------------------------------
+
   root 'deputies#index'
   # Routes for the Bookmarked_senator resource:
   # CREATE

@@ -14,6 +14,7 @@
         <th>State</th>
         <th>Expenses ('11-'14)</th>
         <th>Actions</th>
+        <th>Bookmark</th>
       </tr>
 
       <% @deputies.each do |deputy| %>
@@ -24,7 +25,10 @@
         <td><%= deputy.state %></td>
         <td><%= number_to_currency(deputy.expenses, unit: "R$", precision: 0) %></td>
         <td>
-
+          <a href="/deputies/<%= deputy.id %>/expenses" class="btn btn-info">View expense detail</a>
+          <a href="/deputies/<%= deputy.id %>" class="btn btn-primary">View contact details</a>
+        </td>
+        <td>
           <form action="/create_bookmarked_deputy" method="post">
             <!-- Hidden input for authenticity token to protect from forgery -->
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -36,9 +40,6 @@
               Add to watchlist
             </button>
           </form>
-
-          <a href="/deputies/<%= deputy.id %>/expenses" class="btn btn-info">View expense detail</a>
-          <a href="/deputies/<%= deputy.id %>" class="btn btn-primary">View contact details</a>
         </td>
       </tr>
       <% end %>
